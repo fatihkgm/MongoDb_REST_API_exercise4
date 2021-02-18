@@ -2,22 +2,15 @@ const mongoose = require('mongoose')
 const express = require('express')
 
 const app = express()
-app.use(express.json())
-var obj = require('Sample_User.json');
-
-
 const users = mongoose.model('users', UserSchema)
+
 
 mongoose.connect('mongodb+srv://admin:123@exercises.tdmvy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-connect.then((db) => {
-      console.log('Connected correctly to server!');
-}, (err) => {
-      console.log(err);
-});
+
 
 const UserSchema = new mongoose.Schema({
   name: { type: [String], required: true },
@@ -53,8 +46,8 @@ const UserSchema = new mongoose.Schema({
   },
 })
 
-const users = mongoose.model('users', UserSchema)
 
 
-
-app.listen(8081, () => { console.log('Server is running...') });
+app.listen(8081, () => {
+  console.log('Server is running...')
+})
