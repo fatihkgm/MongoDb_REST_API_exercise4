@@ -5,13 +5,12 @@ const app = express()
 app.use(express.json())
 var obj = require('Sample_User.json');
 
-const url = process.env.MONGODB_URL;
 
-//Connect to mongoDB Atlas
-const connect = mongoose.connect(url, 
-{ 
-      useNewUrlParser: true,
-      useUnifiedTopology: true
+const users = mongoose.model('users', UserSchema)
+
+mongoose.connect('mongodb+srv://admin:123@exercises.tdmvy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 connect.then((db) => {
@@ -55,11 +54,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 const users = mongoose.model('users', UserSchema)
-module.exports = users
 
-mongoose.connect(
-  'mongodb+srv://elvin:Toronto2016@cluster0.pqxvh.mongodb.net/myFirstDatabase'
-)
 
-app.listen({ port: process.env.PORT }, () =>
-  console.log(`🚀 Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`));
+
+app.listen(8081, () => { console.log('Server is running...') });
